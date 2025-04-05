@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
 
-import { Buttton, Input, Logo } from "./index";
+import { Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import authService from "../appwrite/auth";
+import { Button } from "./index";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -77,9 +78,9 @@ const Login = () => {
                 required: true,
               })}
             />
-            <Buttton type="submit" className="w-full">
+            <Button type="submit" className="w-full">
               Sign in
-            </Buttton>
+            </Button>
           </div>
         </form>
       </div>
