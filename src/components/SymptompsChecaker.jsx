@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { RxCross1 } from "react-icons/rx";
 import Markdown from "react-markdown";
 import { FaSearch } from "react-icons/fa";
+import Button from "./Button";
+import { GiSpeaker } from "react-icons/gi";
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
@@ -68,6 +70,26 @@ const SymptompsChecaker = () => {
     localStorage.getItem("chatResponse") || ""
   );
   const [loading, setLoading] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const speak = () => {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    if (!response) return;
+
+    const utterance = new SpeechSynthesisUtterance(response);
+    utterance.lang = "en-US";
+    utterance.rate = 1;
+
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+
+    window.speechSynthesis.speak(utterance);
+  };
 
   useEffect(() => {
     localStorage.setItem("chatResponse", response);
@@ -90,7 +112,7 @@ const SymptompsChecaker = () => {
     }
 
     setLoading(true);
-    setResponse(`Analyzing symptoms... ${(<FaSearch />)}`);
+    setResponse(`Analyzing symptoms...🔍`);
 
     try {
       const res = await fetch(
@@ -139,7 +161,7 @@ const SymptompsChecaker = () => {
     <div className="p-4">
       <h1 className="text-xl font-bold mb-2">Symptom Checker</h1>
 
-      <div className="border p-2 rounded bg-white w-full min-h-[40px] flex flex-wrap items-center">
+      <div className="border p-2 rounded bg-white w-full min-h-[40px] flex flex-wrap items-center shadow-md text-black">
         {selectedWords.map((word) => (
           <span
             key={word}
@@ -177,8 +199,16 @@ const SymptompsChecaker = () => {
       </button>
 
       {response && (
-        <div className="mt-4 p-3 border rounded bg-white text-[20px]">
+        <div className="mt-4 p-3 border rounded bg-white text-gray-800 text-[18px] shadow">
           <strong>AI Response:</strong> <Markdown>{response}</Markdown>
+          <Button
+            onClick={speak}
+            bgColor={isSpeaking ? "bg-red-600" : "bg-blue-600"}
+            className="w-full flex items-center justify-center gap-2 mt-3"
+          >
+            <GiSpeaker />
+            {isSpeaking ? "Speaking..." : "Speak"}
+          </Button>
         </div>
       )}
     </div>

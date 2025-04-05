@@ -7,10 +7,9 @@ import ReactMarkdown from "react-markdown";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import { RiMicAiFill } from "react-icons/ri";
 
 const DeepseekR1 = () => {
-  const [query, setQuery] = useState("");
-
   const [input, setInput] = useState("");
   const [response, setResponse] = useState(
     localStorage.getItem("chatResponse") || ""
@@ -144,49 +143,53 @@ const DeepseekR1 = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h2>Free Chatbot</h2>
-      <Button onClick={startListening} bgColor="bg-yellow-500">
-        🎤 Speak Symptoms
-      </Button>
-      <div className="form-group">
-        <Input
-          type="text"
-          className="form-control"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter your question"
-        />
-      </div>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+      <div className="bg-white w-full max-w-2xl rounded-xl shadow-lg p-6">
+        <h2 className="text-2xl font-bold text-center mb-4 text-blue-700">
+          MediGuide Chatbot
+        </h2>
 
-      <Button
-        type="submit"
-        bgColor="bg-green-600"
-        textColor="text-white"
-        className="mt-2 w-full"
-        disabled={loading}
-        onClick={sendMessage}
-      >
-        {loading ? "Loading..." : "Ask!"}
-      </Button>
+        <div className="flex gap-2 items-center mb-4">
+          <Input
+            type="text"
+            className="flex-1 border border-gray-300 rounded-md px-4 py-2"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask a healthcare question..."
+          />
+          <Button
+            onClick={startListening}
+            bgColor="bg-yellow-500"
+            className="px-4 py-2 cursor-pointer"
+          >
+            <RiMicAiFill />
+          </Button>
+        </div>
 
-      {/* <div
-        className="mt-3"
-        dangerouslySetInnerHTML={{ __html: response }}
-      ></div> */}
+        <Button
+          type="submit"
+          bgColor="bg-green-600"
+          textColor="text-white"
+          className="w-full py-2 mb-4 cursor-pointer"
+          disabled={loading}
+          onClick={sendMessage}
+        >
+          {loading ? "Loading..." : "Ask!"}
+        </Button>
 
-      <div className="bg-white p-7 rounded-lg m-3 text-2xl">
-        <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
-          {response}
-        </Markdown>
-        {/* <Button onClick={speak} bgColor="bg-blue-600" className="mt-2">
-          🔊 Read Aloud
-        </Button> */}
+        <div className="bg-gray-50 border border-gray-300 rounded-md p-4 text-lg min-h-[150px]">
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeHighlight]}
+          >
+            {response}
+          </Markdown>
+        </div>
 
         <Button
           onClick={speak}
           bgColor={isSpeaking ? "bg-red-600" : "bg-blue-600"}
-          className={`mt-2 transition-all duration-300 ${
+          className={`w-full mt-4 py-2 transition-all duration-300 cursor-pointer ${
             isSpeaking ? "animate-pulse" : ""
           }`}
         >
