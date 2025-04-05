@@ -25,13 +25,23 @@ const Header = () => {
       active: !authStatus,
     },
     {
-      name: "About",
-      slug: "/about",
+      name: "doctors",
+      slug: "/doctors",
       active: authStatus,
     },
     {
       name: "chat-bot",
       slug: "/chat-bot",
+      active: authStatus,
+    },
+    {
+      name: "insurance",
+      slug: "/insurance",
+      active: authStatus,
+    },
+    {
+      name: "About",
+      slug: "/abot",
       active: authStatus,
     },
   ];

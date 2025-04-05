@@ -8,6 +8,9 @@ import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import { AuthLayout, Login } from "./components/index.js";
 import Signup from "./pages/Signup.jsx";
+import HealthInsurance from "./components/HealthInsurance/HealthInsurance.jsx";
+import Doctors from "./components/Doctors.jsx";
+import Chatbot from "./components/Chatbot.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,30 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication={false}>
             <Signup />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/doctors",
+        element: (
+          <AuthLayout authentication>
+            <Doctors />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/chat-bot",
+        element: (
+          <AuthLayout authentication>
+            <Chatbot />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/insurance",
+        element: (
+          <AuthLayout authentication>
+            <HealthInsurance />
           </AuthLayout>
         ),
       },
