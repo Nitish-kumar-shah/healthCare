@@ -1,1 +1,13 @@
 @import "tailwindcss";
+.banner {
+  @apply bg-white py-16 rounded-md shadow-md text-center w-[90vw] max-w-screen-md;
+}
+.modal-btn {
+  @apply mt-8 bg-blue-500 border border-blue-500 text-white hover:bg-transparent hover:text-blue-500;
+}
+.open-modal {
+  @apply visible z-10;
+}
+.close-btn {
+  @apply absolute top-4 right-4 text-3xl bg-transparent border-none text-red-700 cursor-pointer transition-all hover:text-red-500 hover:scale-125;
+}

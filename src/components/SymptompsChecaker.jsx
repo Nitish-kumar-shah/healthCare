@@ -73,6 +73,12 @@ const SymptompsChecaker = () => {
     localStorage.setItem("chatResponse", response);
   }, [response]);
 
+  const addWord = (word) => {
+    if (!selectedWords.includes(word)) {
+      setSelectedWords([...selectedWords, word]);
+    }
+  };
+
   const removeWord = (word) => {
     setSelectedWords(selectedWords.filter((w) => w !== word));
   };

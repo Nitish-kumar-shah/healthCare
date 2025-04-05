@@ -5,6 +5,7 @@ import { FaStar } from "react-icons/fa6";
 import { FaStethoscope } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import { SlSpeech } from "react-icons/sl";
+import Chatbot from "../Chatbot";
 
 const insurancePlans = [
   {
@@ -127,7 +128,7 @@ const HealthInsurance = () => {
             >
               Close
             </button>
-            {/* here chatbot */}
+            <Chatbot />
           </div>
         </div>
       )}

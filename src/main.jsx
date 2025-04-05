@@ -11,6 +11,10 @@ import Signup from "./pages/Signup.jsx";
 import HealthInsurance from "./components/HealthInsurance/HealthInsurance.jsx";
 import Doctors from "./components/Doctors.jsx";
 import Chatbot from "./components/Chatbot.jsx";
+import DeepseekR1 from "./components/DeepseekR1.jsx";
+import About from "./components/About.jsx";
+import Modal from "./components/Modal.jsx";
+import SymptompsChecaker from "./components/SymptompsChecaker.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +53,7 @@ const router = createBrowserRouter([
         path: "/chat-bot",
         element: (
           <AuthLayout authentication>
-            <Chatbot />
+            <DeepseekR1 />
           </AuthLayout>
         ),
       },
@@ -58,6 +62,16 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication>
             <HealthInsurance />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/about",
+        element: (
+          <AuthLayout authentication>
+            <About />
+            {/* <Modal /> */}
+            {/* <SymptompsChecaker /> */}
           </AuthLayout>
         ),
       },
