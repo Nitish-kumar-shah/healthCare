@@ -8,6 +8,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import { RiMicAiFill } from "react-icons/ri";
+const APIr1_KEY = import.meta.env.VITE_DEEPSEEK_API_KEY;
 
 const DeepseekR1 = () => {
   const [input, setInput] = useState("");
@@ -76,8 +77,7 @@ const DeepseekR1 = () => {
       const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          Authorization:
-            "Bearer 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",
+          Authorization: `Bearer ${APIr1_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({

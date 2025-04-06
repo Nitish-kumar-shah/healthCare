@@ -1,5 +1,4 @@
 const conf = {
-  opneaiApi: String(import.meta.env.VITE_OPENAI_API_KEY),
   appwriteUrl: String(import.meta.env.VITE_APPWRITE_URL),
   appwriteProjectId: String(import.meta.env.VITE_APPWRITE_PROJECT_ID),
   appwriteDatabaseId: String(import.meta.env.VITE_APPWRITE_DATABASE_ID),
