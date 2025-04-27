@@ -88,7 +88,7 @@ const DeepseekR1 = () => {
               content:
                 "You are an AI assistant that only answers healthcare-related questions. If a user asks about anything unrelated to healthcare, respond with: 'Please ask about healthcare.'",
             },
-            ,
+
             { role: "user", content: input },
           ],
           stream: true,

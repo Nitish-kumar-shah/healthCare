@@ -9,7 +9,6 @@ const About = () => {
     "Namanpratapp",
     "Nitish-kumar-shah",
     "DeveshChaudhary29",
-    "piyush-S04",
   ];
 
   useEffect(() => {
