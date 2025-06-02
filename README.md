@@ -83,4 +83,4 @@ Pull requests are welcome!
 ## 👨‍💻 Built For
 
 Code Astra Hackathon 2025 — Galgotias University
-Team: Nitish, Naman, Devesh, Piyush
+Team: Nitish, Naman, Devesh,
